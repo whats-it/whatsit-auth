@@ -1,0 +1,41 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: whatsit-auth
+  namespace: whatsit
+  labels:
+    name: whatsit-auth
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 80
+      targetPort: 3000
+      protocol: TCP
+  selector:
+    name: whatsit-auth
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: whatsit-auth
+  namespace: whatsit
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        role: auth
+        name: whatsit-auth
+    spec:
+      containers:
+      - image: gcr.io/whatsit-174908/sphinx-api:latest
+        name: whatsit-auth
+        env:
+        - name: GITHUB_CLIENTID
+          value: 40b12bd8b129cc8803e3
+        - name: GITHUB_CLIENTSECRET
+          value: 8242e2a5c9e5ac5ef00aa23cbf6daaea5998645e
+        - name: GITHUB_CALLBACKURL
+          value: http://sphinx.whatsit.net/auth/github/callback
+        ports:
+        - containerPort: 3000
