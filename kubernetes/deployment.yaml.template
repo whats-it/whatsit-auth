@@ -1,0 +1,27 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: whatsit-auth
+  namespace: whatsit
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        role: auth
+        name: whatsit-auth
+    spec:
+      containers:
+      - image: gcr.io/whatsit-174908/sphinx-api:latest
+        name: whatsit-auth
+        env:
+        - name: GITHUB_CLIENTID
+          value: xxx
+        - name: GITHUB_CLIENTSECRET
+          value: xxx
+        - name: GITHUB_CALLBACKURL
+          value: http://xxx
+        - name: GITHUB_REDIRECTURL
+          value: http://xxx
+        ports:
+        - containerPort: 3000
