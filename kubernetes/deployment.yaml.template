@@ -23,5 +23,13 @@ spec:
           value: http://xxx
         - name: GITHUB_REDIRECTURL
           value: http://xxx
+        - name: GOOGLE_CLIENTID
+          value: xxx
+        - name: GOOGLE_CLIENTSECRET
+          value: xxx
+        - name: GOOGLE_CALLBACKURL
+          value: http://xxx
+        - name: GOOGLE_REDIRECTURL
+          value: http://xxx
         ports:
         - containerPort: 3000

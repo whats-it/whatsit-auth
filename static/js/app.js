@@ -126,9 +126,10 @@ $(document).ready(function($){
     window.location.href = 'http://sphinx.whatsit.net/auth/github';
   })
 
-  $('#btn-login-bitbucket').click( function() {
+  $('#btn-login-google').click( function() {
     // navigate to bitbucket login page
-    console.log('btn-login-bitbucket clicked.')
+    console.log('btn-login-google clicked.')
+      window.location.href = 'http://sphinx.whatsit.net/auth/google';
   })
 
   // Scroll detecting navigation
